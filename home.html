@@ -1,0 +1,78 @@
+
+<head>
+  <title>home</title>
+  <meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+</head>
+
+	<body>
+		<header>
+			<img src='/img/weoBadge.png' />
+			<h1>Weo</h1>
+			<ul id='main-nav'>
+				<li>About</li>
+				<li>FAQ</li>
+				<li>Contact</li>
+				<li>Login</li>
+			</ul>
+		</header>
+		<div id='main-content'>
+				{{> hero}}
+				{{> sign_in}}
+				{{> sign_up}}
+		</div>
+		<footer>
+			{{> footer}}
+		</footer>
+	</body>
+
+<template name="hero">
+	<div id='hero'>
+		<div class='inner'>
+		{{> slides}}
+		</div>
+	</div>
+</template>
+
+<template name='slides'>
+	<div id='slide-1'>
+		<div class='text'>
+			<h2>LEARN SMARTER</h2>
+			<p>Social learning and other suff involving owls and goats.</p>
+		</div>
+	</div>
+</template>
+
+<template name="sign_in">
+	<div id='sign-in'>
+		<div class='inner'>
+			{{{input "username" type="text" placeholder="Username or E-mail"}}}
+  			{{{input "password" type="password" placeholder="Password"}}}
+  			<input id='sign-in-button'type='button' value='Sign In' />
+	  	</div>
+	  </div>
+</template>
+
+<template name="sign_up">
+	<div id='sign-up'>
+		<div class='inner'>
+			{{{input "fullname" type="text" placeholder="Full Name"}}}
+			{{{input "email" type="text" placeholder="Username or E-mail"}}}
+  			{{{input "new-password" type="password" placeholder="Password"}}}
+  			<input id='sign-up-button' type='button' value='Sign In' />
+	  	</div>
+  	</div>
+</template>
+
+
+<template name='footer'>
+	<ul>
+		<li>HOME</li>
+		<li>ABOUT</li>
+		<li>TOUR</li>
+		<li>JOBS</li>
+		<li>FAQ</li>	
+	</ul>
+</template>

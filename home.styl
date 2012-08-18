@@ -1,0 +1,47 @@
+@import "nib";
+global-reset();
+@import "../common/common.styl";
+@import url("http://fonts.googleapis.com/css?family=Peralta");
+
+centered() {
+	width: 980px;
+	margin: 0 auto;
+}
+
+body {
+	padding-top: 80px;
+	background-image: url('/img/homeBg.png');
+}
+
+header {
+	background: rgba(#333, .8);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	line-height: 65px;
+	img {
+		margin: 1px 0 0 30px;
+		float: left;
+		display: block;
+	}
+	h1 {
+		float: left;
+		margin-left: 20px;
+		color: #FFF;
+		font-family: Peralta;
+		font-size: 48px;
+		line-height: 65px;
+	}
+	#main-nav {
+		float: right;
+		margin-right: 30px;
+		li {
+			color: #FFF;
+			float: left;
+			margin-left: 20px;
+		}
+	}
+}
+
+
+	
