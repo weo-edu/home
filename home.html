@@ -1,15 +1,43 @@
 
 <head>
-  <title>home</title>
+  <title>&pi; &int; &le; x &ang; - &theta; &asymp; &there4; + &radic; &infin; &Omega; &mu; &lambda; &empty;</title>
   <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=2.3"/>
+	<link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
 </head>
 
 	<body>
-		<header>
-			<img src='/img/weoBadge.png' />
+		{{> header}}
+
+		<section id='main-content'>
+			<div class='centered'>
+				{{> hero}}
+				<div id='info'>
+					{{> info}}
+				</div>
+			</div>
+		</section>
+
+		<section id='about'>
+			{{> about}}
+		</section>
+
+		<section id='faq'>
+			{{> faq}}
+		</section>
+
+		<footer>
+			{{> footer}}
+		</footer>
+
+	</body>
+
+
+<template name='header'>
+	<header>
+		<div class='center'>
+			<img src='/img/weoBadge.png'/>
 			<h1>Weo</h1>
 			<ul id='main-nav'>
 				<li>About</li>
@@ -17,16 +45,9 @@
 				<li>Contact</li>
 				<li>Login</li>
 			</ul>
-		</header>
-		<div id='main-content'>
-				{{> hero}}
-				{{> sign_in}}
-				{{> sign_up}}
 		</div>
-		<footer>
-			{{> footer}}
-		</footer>
-	</body>
+	</header>
+</template>
 
 <template name="hero">
 	<div id='hero'>
@@ -39,40 +60,100 @@
 <template name='slides'>
 	<div id='slide-1'>
 		<div class='text'>
-			<h2>LEARN SMARTER</h2>
+			<h2>Learn Smarter</h2>
 			<p>Social learning and other suff involving owls and goats.</p>
 		</div>
 	</div>
 </template>
 
-<template name="sign_in">
+<template name="info">
 	<div id='sign-in'>
-		<div class='inner'>
-			{{{input "username" type="text" placeholder="Username or E-mail"}}}
-  			{{{input "password" type="password" placeholder="Password"}}}
-  			<input id='sign-in-button'type='button' value='Sign In' />
-	  	</div>
-	  </div>
-</template>
-
-<template name="sign_up">
+		<h4>Login Here!</h4>
+		{{{input "username" type="text" placeholder="Username or E-mail"}}}
+		{{{input "password" type="password" placeholder="Password"}}}
+		<input id='sign-in-button'type='submit' value='Login' />
+		<a class='forgot' href=''>Forgot Your Password?</a>
+  	</div>
 	<div id='sign-up'>
-		<div class='inner'>
-			{{{input "fullname" type="text" placeholder="Full Name"}}}
-			{{{input "email" type="text" placeholder="Username or E-mail"}}}
-  			{{{input "new-password" type="password" placeholder="Password"}}}
-  			<input id='sign-up-button' type='button' value='Sign In' />
-	  	</div>
+		<h4>New To Weo? <span style='font-weight: 200;'>Sign Up</span></h4>
+		{{{input "fullname" type="text" placeholder="Full Name"}}}
+		{{{input "email" type="text" placeholder="Username or E-mail"}}}
+		{{{input "new-password" type="password" placeholder="Password"}}}
+		<input id='sign-up-button' type='submit' value='Sign Up' />
   	</div>
 </template>
 
 
+<template name='about'>
+	<div class='center'>
+		<h3>About.</h3>
+		<div class='bucket'>
+			<div class='box'>
+			</div>
+			<h4>Teachers</h4>
+			<p>Awesome software to help you manage gradebooks, seating charts, and curriculum.  All through Weo!</p>
+		</div>
+		<div class='bucket'>
+			<div class='box'>
+			</div>
+			<h4>Kids</h4>
+			<p>Learn by playing games and challenging your friends.  Stuck on a problem?  Use our help section to learn how you can outwit your opponents.</p>
+		</div>
+		<div class='bucket'>
+			<div class='box'>
+			</div>
+			<h4>Parents</h4>
+			<p>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+		</div>
+	</div>
+</template>
+
+<template name='faq'>
+	<div class='center'>
+		<h3>FAQ.</h3>
+		<ul>
+			<li>
+				<div class='num'>1.</div>
+				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+			</li>
+			<li>
+				<div class='num'>2.</div>
+				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+			</li>
+			<li>
+				<div class='num'>3.</div>
+				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+			</li>
+		</ul>
+	</div>
+</template>
+
 <template name='footer'>
-	<ul>
-		<li>HOME</li>
-		<li>ABOUT</li>
-		<li>TOUR</li>
-		<li>JOBS</li>
-		<li>FAQ</li>	
-	</ul>
+	<div class='center'>
+		<h3>Contact.</h3>
+		<ul style='width: 200px;'>
+			<li><h4>Navigate</h4></li>
+			<li>Top</li>
+			<li>About</li>
+			<li>FAQ</li>
+			<li>Contact</li>	
+		</ul>
+		<ul>
+			<li><h4>Come Visit!</h4></li>
+			<li>933 N. Highland Ave</li>
+			<li>Los Angeles, CA 90038</li>
+			<li>map</li>
+			<li>&nbsp;</li>
+			<li>424.209.9399</li>
+		</ul>
+		<ul>
+			<li><h4>Connect</h4></li>
+			<li><a>info@weo.com</a></li>
+			<li>facebook.com/weo</li>
+			<li>twitter.com/weo</li>
+		</ul>
+		
+		<a href='' class='sign-up-circle'>Sign Up</a>
+		<hr/>
+	</div>
 </template>

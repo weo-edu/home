@@ -1,9 +1,27 @@
 if (Meteor.is_client) {
   route('/', function(ctx){ 
 
-    
+    // XXX Need to tear down scroll 
+    $(document).bind('scroll', function(e) {
+      if(window.pageYOffset >= 5)
+        $('header').addClass('shrink');
+      else
+        $('header').removeClass('shrink');
+    });
+
+    Template.events = {
+      'scroll': function(e) {
+        console.log(e);
+      }
+    }
+
+    //  XXX Reanimates on hot code push :(
 
   });
+
+  Template.header.shrink = function(){
+      return window.pageYOffset >= 300 ? 'shrink' : '';
+  }
 
   // Template.hello.greeting = function () {
   //   return "Welcome to home.";
@@ -16,8 +34,8 @@ if (Meteor.is_client) {
   //       console.log("You pressed the button");
   //   }
   // };
-
   route.start();
+  
 
 }
 
