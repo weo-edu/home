@@ -5,17 +5,23 @@ if (Meteor.is_client) {
     // Need to update has when scroll down
     // need to maintain page scroll and active
     // nav
-    $(document).bind('scroll', function(e) {
-      if(window.pageYOffset > 0)
-        $('header').addClass('shrink');
-      else
-        $('header').removeClass('shrink');
-    });
+    Template.header.create = function() {
+      this.scrollHandler = function(e) {
+        if(window.pageYOffset > 0)
+          $('header').addClass('shrink');
+        else
+          $('header').removeClass('shrink');
+      }
 
-    Template.events = {
-      'scroll': function(e) {
-        console.log(e);
-      },
+      $(document).bind('scroll', this.scrollHandler);  
+    }
+
+    Template.header.destroy = function() {
+      $(document).unbind(this.scrollHandler);
+    }
+    
+
+    Template.header.events = {
       'click #main-nav li': function(e) {
         $('#main-nav li').removeClass('active');
 
@@ -29,7 +35,10 @@ if (Meteor.is_client) {
           offset -= 40;
 
         $.scrollTo(offset, 200, {easing: 'swing'});
-      },
+      }
+    }
+
+    Template.footer.events = {
       'click .sign-up-circle': function() {
          $('#main-nav li.main-content').click();
       }
