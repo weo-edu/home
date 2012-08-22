@@ -1,9 +1,12 @@
 if (Meteor.is_client) {
   route('/', function(ctx){ 
 
-    // XXX Need to tear down scroll 
+    // XXX Need to tear down scroll
+    // Need to update has when scroll down
+    // need to maintain page scroll and active
+    // nav
     $(document).bind('scroll', function(e) {
-      if(window.pageYOffset >= 5)
+      if(window.pageYOffset > 0)
         $('header').addClass('shrink');
       else
         $('header').removeClass('shrink');
@@ -12,28 +15,31 @@ if (Meteor.is_client) {
     Template.events = {
       'scroll': function(e) {
         console.log(e);
+      },
+      'click #main-nav li': function(e) {
+        $('#main-nav li').removeClass('active');
+
+        var el = $(e.currentTarget);
+        var id = el.attr('class');
+
+        el.addClass('active');
+        
+        var offset = $('#'+id).offset().top;
+        if(offset > 50) 
+          offset -= 40;
+
+        $.scrollTo(offset, 200, {easing: 'swing'});
+      },
+      'click .sign-up-circle': function() {
+         $('#main-nav li.main-content').click();
       }
     }
-
-    //  XXX Reanimates on hot code push :(
-
   });
 
   Template.header.shrink = function(){
       return window.pageYOffset >= 300 ? 'shrink' : '';
   }
 
-  // Template.hello.greeting = function () {
-  //   return "Welcome to home.";
-  // };
-
-  // Template.hello.events = {
-  //   'click input' : function () {
-  //     // template data, if any, is available in 'this'
-  //     if (typeof console !== 'undefined')
-  //       console.log("You pressed the button");
-  //   }
-  // };
   route.start();
   
 

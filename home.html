@@ -27,9 +27,9 @@
 			{{> faq}}
 		</section>
 
-		<footer>
+		<section id='footer'>
 			{{> footer}}
-		</footer>
+		</section>
 
 	</body>
 
@@ -40,10 +40,10 @@
 			<img src='/img/weoBadge.png'/>
 			<h1>Weo</h1>
 			<ul id='main-nav'>
-				<li>About</li>
-				<li>FAQ</li>
-				<li>Contact</li>
-				<li>Login</li>
+				<li class='main-content active'>Login</li>
+				<li class='about'>About</li>
+				<li class='faq'>FAQ</li>
+				<li class='footer'>Contact</li>
 			</ul>
 		</div>
 	</header>
@@ -51,9 +51,11 @@
 
 <template name="hero">
 	<div id='hero'>
-		<div class='inner'>
-		{{> slides}}
-		</div>
+		<img class='owl' src='/img/owl.png' />
+		<h2>Learn Smarter</h2>
+		<p>Here is where we put a bunch of stuff about chirrens.  We love the chirren and want them to succeed in all the things that they do. Yeah!! Here is where we put a bunch of stuff about chirrens.  We love the chirren and want them to succeed in all the things that they do. Yeah!!</p>
+		<!-- <div class='inner'>
+		</div> -->
 	</div>
 </template>
 
@@ -61,7 +63,8 @@
 	<div id='slide-1'>
 		<div class='text'>
 			<h2>Learn Smarter</h2>
-			<p>Social learning and other suff involving owls and goats.</p>
+			<p>Here is where we put a bunch of stuff about chirrens.  We love the chirren and want them to succeed in all the things that they do. Yeah!! Here is where we put a bunch of stuff about chirrens.  We love the chirren and want them to succeed in all the things that they do. Yeah!!</p>
+
 		</div>
 	</div>
 </template>
@@ -87,24 +90,26 @@
 <template name='about'>
 	<div class='center'>
 		<h3>About.</h3>
+		
 		<div class='bucket'>
-			<div class='box'>
+			<div class='box' style='background: url("/img/parents.png") center no-repeat;'>
 			</div>
-			<h4>Teachers</h4>
-			<p>Awesome software to help you manage gradebooks, seating charts, and curriculum.  All through Weo!</p>
+			<h4>Parents</h4>
+			<p>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
 		</div>
 		<div class='bucket'>
-			<div class='box'>
+			<div class='box' style='background: url("/img/kids.png") center no-repeat #888'>
 			</div>
 			<h4>Kids</h4>
 			<p>Learn by playing games and challenging your friends.  Stuck on a problem?  Use our help section to learn how you can outwit your opponents.</p>
 		</div>
 		<div class='bucket'>
-			<div class='box'>
+			<div class='box' style='background: url("/img/teacher.png") center no-repeat #68AA3A'>
 			</div>
-			<h4>Parents</h4>
-			<p>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+			<h4>Teachers</h4>
+			<p>Awesome software to help you manage gradebooks, seating charts, and curriculum.  All through Weo!</p>
 		</div>
+
 	</div>
 </template>
 
@@ -114,15 +119,15 @@
 		<ul>
 			<li>
 				<div class='num'>1.</div>
-				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+				<p><strong>Who are Weo?</strong>Weo is leverage.</p>
 			</li>
 			<li>
 				<div class='num'>2.</div>
-				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+				<p><strong>What services do you offer?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
 			</li>
 			<li>
 				<div class='num'>3.</div>
-				<p><strong>Who are Weo?</strong>See where your kids are stuck and where they need help.  View their progress in realtime with easy to use graphs and intuitive visualizations.</p>
+				<p><strong>How do I get started?</strong>Cinchy! Just <a style='font-style: italic;' href='' onclick="$('#main-nav li.main-content').click()">sign up</a> at the top of this page and get cracking.  Whether your a student, teacher, or parent, Weo can help you attain your goals.</p>
 			</li>
 		</ul>
 	</div>

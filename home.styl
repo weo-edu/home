@@ -2,7 +2,6 @@
 global-reset();
 @import "../common/common.styl";
 
-
 /**
  * MIXINS
  */
@@ -53,6 +52,13 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
+highlight = #00AEEF;
+::selection 	 	{background: highlight; color: #FFF;}
+::-moz-selection 	{background: highlight; color: #FFF;}
+img::selection 		{background: transparent;}
+img::-moz-selection	{background: transparent;}
+body {-webkit-tap-highlight-color: highlight;}
+
 a { color: inherit;}
 
 h2, h3, h4, h5 {
@@ -73,7 +79,7 @@ h4 {
 }
 
 p{
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 1.4em;
 }
 
@@ -88,7 +94,7 @@ strong {
 section {
 	border-bottom: 1px solid rgba(#000, .5);
 	border-top: 1px solid rgba(#FFF, .9);
-	padding: 20px;
+	padding: 30px 0;
 	clearfix();
 }
 
@@ -96,10 +102,11 @@ section {
  * HEADER
  */
 header {
+	border-bottom: 1px solid rgba(255, 255, 255, .25);
 	transform: translate3d(0,0,0);
 	size = 80px;
-	dur = .2s ease-in;
-	background: rgba(#333, .5);
+	dur = .2s ease-out;
+	background: rgba(#000, .3);
 	position: fixed;
 	z-index: 999;
 	top: 0;
@@ -109,7 +116,7 @@ header {
 	margin-top: 0;
 	img {
 		transition: all dur;
-		margin: 10px 0 0 30px;
+		margin-top 10px;
 		float: left;
 		display: block;
 		transform: scale(1);
@@ -126,30 +133,42 @@ header {
 	}
 	#main-nav {
 		float: right;
-		margin-right: 30px;
 		li {
-			transition: line-height dur;
-			color: #FFF;
+			user-select: none;
+			transition: all dur;
+			color: #DDD;
+			text-shadow: 0 1px 0 rgba(0, 0, 0, .5)
 			float: left;
-			margin-left: 20px;
+			margin-left: 25px;
 			line-height: size;
+			cursor: pointer;
+			&:hover, &.active {
+				color: #FFF;
+			}
 		}
 	}
 	&.shrink {
 		size = 50px;
-		background: #333;
+		background: #222;
 		line-height: size;
 		h1 {
+
 			line-height: size;
 			transform: scale(.8);
 			margin-left: -5px;
+			margin-top: 3px;
 		}
 		img {
-			margin-top: -5px;
+			margin-top: -2px;
 			transform: rotate(5deg) scale(.7);
 		}
 		#main-nav li {
+			color: #777;
+			margin-top: 3px;
 			line-height: size;
+			&:hover, &.active {
+				color: #FFF;
+			}
 		}
 	}
 }
@@ -158,29 +177,46 @@ header {
  * 	MAIN CONTENT
  */
 section#main-content {
-	background-image: url('/img/homeBg.png');
+	background-image: url('/img/clouds.png'), url('/img/homeBg2.png');
+	background-position: center 463px, center;
+	height: 515px;
+	background-repeat: repeat-x, repeat;
 	border-top: 0;
+	margin-bottom: -50px;
 	.centered {
 		width: 980px;
 		margin: 0 auto;
-		padding-top: 80px;
+		padding-top: 70px;
 	}
 	
 	#hero {
-		background-clip: padding-box;
-		background-color: #E45B3F;
+		// background-clip: padding-box;
+		// background-color: #E6E7E8;
 		float: left;
 		margin-right: 20px;
 		padding: 20px;
 		width: 560px;
-		height: 340px;
-		border: 15px solid rgba(#FFF, 0.5);
+		height: 410px;
+		// box-shadow: 0 0 10px #333;
 		border-radius: 8px;
 		color: #FFF;
+		position: relative;
+		text-shadow: 1px 1px 0 rgba(0, 0, 0, .5);
 		h2 {
-			margin-top: -5px;
-			font-size: 120px;
+			margin-top: -15px;
+			font-size: 110px;
 			line-height: 100px;
+			position: relative;
+		}
+		p {
+			margin-top: 20px;
+			font-size: 18px;
+			// color: #58595B;
+		}
+		.owl {
+			position: absolute;
+			right: 0;
+			top: 0;
 		}
 	}
 }
@@ -191,21 +227,11 @@ section#main-content {
 	background: #E6E7E8;
 	float: left;
 	width: 290px;
-	height: 380px;
-	border-radius: 8px 8px 0 0;
-	box-shadow: 0 40px 10px #333;
+	height: 410px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px #333;
 	position: relative;
 	color: #58595B;
-	&:after {
-		content: ' ';
-		width: 100%;
-		height: 40px;
-		background: #E6E7E8;
-		position: absolute;
-		bottom: -40px;
-		left: 0;
-		border-radius: 0 0 8px 8px;
-	}
 
 	input[type=text], input[type=password] {
 		width: 274px;
@@ -295,7 +321,7 @@ section#about {
 		.box {
 			height: 320px;
 			background: #FFF;
-			box-shadow: inset 1px 1px rgba(#AAA, .9), inset 1px 1px rgba(#FFF, .9);
+			box-shadow: inset 1px 1px 2px rgba(#666, .9), inset -1px -1px 2px rgba(#FFF, .5);
 			margin-bottom: 25px;
 		}
  	}
@@ -368,7 +394,7 @@ section#faq {
 /**
  * FOOTER
  */
-footer {
+section#footer {
 	padding: 20px;
 	border-top: 1px solid #777;
 	background: #414042;
