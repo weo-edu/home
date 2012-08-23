@@ -1,8 +1,19 @@
 if (Meteor.is_client) {
   route('/', function(ctx){ 
+    $('#sign-in-form').live('submit', function(e) {
+      e.preventDefault();
+      var username = $(this).find('#username').val();
+      var password = $(this).find('#password').val();
 
-    // XXX Need to tear down scroll
-    // Need to update has when scroll down
+      User.login(username, password);
+      
+    });
+
+    User.on('login', function() {
+      var url = utils.parseUrl('/app!profile')
+      process.sendEmit('purl:url', url);
+    });
+    // XXX Need to update has when scroll down
     // need to maintain page scroll and active
     // nav
     Template.header.create = function() {
@@ -43,14 +54,20 @@ if (Meteor.is_client) {
          $('#main-nav li.main-content').click();
       }
     }
+
+    Template.info.events = {
+      '#sign-in-form submit': function(e) {
+        alert('text');
+      }
+    }
   });
 
+  //  XXX On page load offset is always 0;
   Template.header.shrink = function(){
       return window.pageYOffset >= 300 ? 'shrink' : '';
   }
 
   route.start();
-  
 
 }
 
