@@ -6,11 +6,10 @@ if (Meteor.is_client) {
       var password = $(this).find('#password').val();
 
       User.login(username, password);
-      
     });
 
     User.on('login', function() {
-      var url = utils.parseUrl('/app!profile')
+      var url = utils.parseUrl('/app!profile');
       process.sendEmit('purl:url', url);
     });
     // XXX Need to update has when scroll down
@@ -35,23 +34,20 @@ if (Meteor.is_client) {
     Template.header.events = {
       'click #main-nav li': function(e) {
         $('#main-nav li').removeClass('active');
-
         var el = $(e.currentTarget);
-        var id = el.attr('class');
+
+        scrollToId(el.attr('class'));
 
         el.addClass('active');
-        
-        var offset = $('#'+id).offset().top;
-        if(offset > 50) 
-          offset -= 40;
-
-        $.scrollTo(offset, 200, {easing: 'swing'});
       }
     }
 
     Template.footer.events = {
       'click .sign-up-circle': function() {
-         $('#main-nav li.main-content').click();
+         $.scrollTo(0, 200, {easing: 'swing'});
+      },
+      'click #navigate li': function(e) {
+        scrollToId($(e.currentTarget).attr('class'));
       }
     }
 
@@ -62,13 +58,20 @@ if (Meteor.is_client) {
     }
   });
 
+  function scrollToId(id) {
+    var offset = $('#'+id).offset().top;
+    if(offset > 50) 
+      offset -= 40;
+
+    $.scrollTo(offset, 200, {easing: 'swing'});
+  }
+
   //  XXX On page load offset is always 0;
   Template.header.shrink = function(){
       return window.pageYOffset >= 300 ? 'shrink' : '';
   }
 
   route.start();
-
 }
 
 if (Meteor.is_server) {
