@@ -15,7 +15,7 @@ if (Meteor.is_client) {
     // XXX Need to update has when scroll down
     // need to maintain page scroll and active
     // nav
-    Template.header.create = function() {
+    Template.header.created = function() {
       this.scrollHandler = function(e) {
         if(window.pageYOffset > 0)
           $('header').addClass('shrink');
@@ -26,7 +26,7 @@ if (Meteor.is_client) {
       $(document).bind('scroll', this.scrollHandler);  
     }
 
-    Template.header.destroy = function() {
+    Template.header.destroyed = function() {
       $(document).unbind(this.scrollHandler);
     }
     
@@ -44,7 +44,7 @@ if (Meteor.is_client) {
 
     Template.footer.events = {
       'click .sign-up-circle': function() {
-         $.scrollTo(0, 200, {easing: 'swing'});
+         $('body, html').animate({scrollTop: 0}, 200, 'swing');
       },
       'click #navigate li': function(e) {
         scrollToId($(e.currentTarget).attr('class'));
@@ -63,7 +63,7 @@ if (Meteor.is_client) {
     if(offset > 50) 
       offset -= 40;
 
-    $.scrollTo(offset, 200, {easing: 'swing'});
+    $('body, html').animate({scrollTop: offset}, 200, 'swing');
   }
 
   //  XXX On page load offset is always 0;
