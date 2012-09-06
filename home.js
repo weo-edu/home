@@ -1,5 +1,5 @@
 if (Meteor.is_client) {
-  route('/', function(ctx){ 
+  // route('/', function(ctx){ 
     $('#sign-in-form').live('submit', function(e) {
       e.preventDefault();
       var username = $(this).find('#username').val();
@@ -17,13 +17,13 @@ if (Meteor.is_client) {
     // nav
     Template.header.created = function() {
       this.scrollHandler = function(e) {
-        if(window.pageYOffset > 0)
-          $('header').addClass('shrink');
-        else
-          $('header').removeClass('shrink');
+      if(window.pageYOffset > 0)
+        $('header').addClass('shrink');
+      else
+        $('header').removeClass('shrink');
       }
-
-      $(document).bind('scroll', this.scrollHandler);  
+      
+      $(document).bind('scroll', this.scrollHandler);
     }
 
     Template.header.destroyed = function() {
@@ -56,7 +56,7 @@ if (Meteor.is_client) {
         alert('text');
       }
     }
-  });
+  // });
 
   function scrollToId(id) {
     var offset = $('#'+id).offset().top;
@@ -71,7 +71,7 @@ if (Meteor.is_client) {
       return window.pageYOffset >= 300 ? 'shrink' : '';
   }
 
-  route.start();
+  // route.start();
 }
 
 if (Meteor.is_server) {
