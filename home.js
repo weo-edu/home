@@ -8,6 +8,16 @@ if (Meteor.is_client) {
       User.login(username, password);
     });
 
+    $('#sign-up-form').live('submit', function(e) {
+      e.preventDefault();
+      
+      var username = $(this).find('#email').val();
+      var password = $(this).find('#new-password').val();
+
+      User.create(username, password);
+      User.login(username, password);
+    });
+
     User.on('login', function() {
       var url = utils.parseUrl('/app!profile');
       process.sendEmit('purl:url', url);
