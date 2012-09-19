@@ -5,7 +5,13 @@ if (Meteor.is_client) {
       var username = $(this).find('#username').val();
       var password = $(this).find('#password').val();
 
-      User.login(username, password);
+      User.login(username, password, function() {
+        console.log('login');
+        Meteor.defer(function() {
+          route('/app!profile');
+        });
+        
+      });
     });
 
     $('#sign-up-form').live('submit', function(e) {
@@ -18,10 +24,10 @@ if (Meteor.is_client) {
       User.login(username, password);
     });
 
-    User.on('login', function() {
+    /*User.on('login', function() {
       var url = utils.parseUrl('/app!profile');
       process.sendEmit('purl:url', url);
-    });
+    });*/
     // XXX Need to update has when scroll down
     // need to maintain page scroll and active
     // nav
