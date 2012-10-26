@@ -17,7 +17,9 @@ if (Meteor.is_client) {
       var password = $(this).find('#new-password').val();
 
       User.create(username, password);
-      User.login(username, password);
+      User.login(username, password, function() {
+        route('/app!profile');
+      });
     });
 
     // XXX Need to update has when scroll down
