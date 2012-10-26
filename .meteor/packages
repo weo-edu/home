@@ -9,8 +9,8 @@ jquery
 uikit
 route
 users
-accounts
-accounts-passwords
+accounts-base
+accounts-password
 edis-cli
 process
 emitter
