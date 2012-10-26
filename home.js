@@ -6,10 +6,7 @@ if (Meteor.is_client) {
       var password = $(this).find('#password').val();
 
       User.login(username, password, function() {
-        Meteor.defer(function() {
-          route('/app!profile');
-        });
-        
+        route('/app!profile');
       });
     });
 
@@ -20,13 +17,11 @@ if (Meteor.is_client) {
       var password = $(this).find('#new-password').val();
 
       User.create(username, password);
-      User.login(username, password);
+      User.login(username, password, function() {
+        route('/app!profile');
+      });
     });
 
-    /*User.on('login', function() {
-      var url = utils.parseUrl('/app!profile');
-      process.sendEmit('purl:url', url);
-    });*/
     // XXX Need to update has when scroll down
     // need to maintain page scroll and active
     // nav
