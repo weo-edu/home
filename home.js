@@ -6,7 +6,6 @@ if (Meteor.is_client) {
       var password = $(this).find('#password').val();
 
       User.login(username, password, function() {
-        console.log('login');
         Meteor.defer(function() {
           route('/app!profile');
         });
