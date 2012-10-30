@@ -13,13 +13,26 @@ if (Meteor.is_client) {
     $('#sign-up-form').live('submit', function(e) {
       e.preventDefault();
       
+      var name = $(this).find('#fullname').val()
       var username = $(this).find('#email').val();
       var password = $(this).find('#new-password').val();
 
-      User.create(username, password);
-      User.login(username, password, function() {
-        route('/app!profile');
+      User.create(username, password, function(err) {
+        if (!err) {
+          User.login(username, password, function() {
+            var user = {};
+            user._id = Meteor.user()._id;
+            user.username = username;
+            user.type = 'user';
+            user.title = name;
+            event('create', user);
+            route('/app!profile');
+          });
+        } else
+          console.log(err);
+        
       });
+      
     });
 
     // XXX Need to update has when scroll down
